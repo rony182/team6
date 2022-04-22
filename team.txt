@@ -1,8 +1,4 @@
 Link to team Trello Board: https://trello.com/b/nr9NXhPX/team-6-board 
 Team 6
 Jared Giroux
-<<<<<<< HEAD
-Here's an error!
-=======
 Rony Nickson Calderon Sara
->>>>>>> 70094332d4c80361d21a082c51d7e549f33ad740
