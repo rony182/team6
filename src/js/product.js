@@ -26,7 +26,7 @@ function getProductsData() {
 
 // add to cart button event handler
 function addToCart(e) {
-  const product = products.find((item) => item.Id === e.target.dataset.id);
+  const product = lookUpProduct(e)
   setLocalStorage("so-cart", product);
 }
 
