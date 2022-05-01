@@ -15,7 +15,9 @@ export default class ProductList {
     list.forEach(product => {
       const clone = template.content.cloneNode(true);
       const filledTemplate = this.prepareTemplate(clone, product);
-      this.listElement.appendChild(filledTemplate);
+      if (this.tentFilter(product.Id)){
+          this.listElement.appendChild(filledTemplate);
+      }
     })
 
   }
@@ -30,6 +32,16 @@ export default class ProductList {
     template.querySelector('.product-card__price').textContent += product.FinalPrice;
 
     return template;
+
+  }
+
+  tentFilter(id){
+
+    const tentWhiteList = ["880RR", "985RF", "985PR", "344YJ"];
+
+    const match = (tent) => tent === id;
+
+    return tentWhiteList.some(match);
 
   }
 
