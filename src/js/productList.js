@@ -15,7 +15,7 @@ export default class ProductList {
     list.forEach(product => {
       const clone = template.content.cloneNode(true);
       const filledTemplate = this.prepareTemplate(clone, product);
-      list.appendChild(filledTemplate);
+      this.listElement.appendChild(filledTemplate);
     })
 
   }
