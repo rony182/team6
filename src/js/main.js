@@ -3,5 +3,5 @@ import ProductList from "./productList.js";
 
 const dataSource = new ProductData("tents");
 
-const list = new ProductList("tents", dataSource, )
-console.log(list);
+const tentList = new ProductList("tents", dataSource, );
+console.log(tentList.dataSource.getData());
