@@ -1,4 +1,5 @@
-import { setLocalStorage } from "./utils.js";
+import { setLocalStorage, getLocalStorage } from "./utils.js";
+
 
 export default class ProductDetails {
   constructor(productId, dataSource){
@@ -15,8 +16,27 @@ export default class ProductDetails {
             .addEventListener("click", this.addToCart.bind(this));
   }
   addToCart() {
-    
-    setLocalStorage("so-cart", this.product);
+
+    var cartObj = new Array();
+
+    if (getLocalStorage("so-cart")!=null){
+      cartObj = getLocalStorage("so-cart");
+      console.log(cartObj);
+    } else {
+      console.log("Cart is empty!");
+    }
+
+    // console.log(cartItems);
+
+    cartObj.push(this.product);
+
+    console.log(cartObj);
+
+
+    // setLocalStorage("so-cart", this.product); //old
+    setLocalStorage("so-cart", cartObj); // new
+    // Used this as a reference: https://www.smashingmagazine.com/2014/02/create-client-side-shopping-cart/ 
+    // and this: https://stopbyte.com/t/how-to-make-a-shopping-cart-in-javascript/412 
   }
   renderProductDetails() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
