@@ -1,42 +1,39 @@
 import { setLocalStorage, getLocalStorage } from "./utils.js";
 
-
 export default class ProductDetails {
-  constructor(productId, dataSource){
+  constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
-    
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
     // add listener to Add to Cart button
-    document.getElementById("addToCart")
-            .addEventListener("click", this.addToCart.bind(this));
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addToCart.bind(this));
   }
   addToCart() {
-
     var cartObj = new Array();
 
-    if (getLocalStorage("so-cart")!=null){
+    if (getLocalStorage("so-cart") != null) {
       cartObj = getLocalStorage("so-cart");
-      console.log(cartObj);
+      // console.log(cartObj);
     } else {
-      console.log("Cart is empty!");
+      // console.log("Cart is empty!");
     }
 
     // console.log(cartItems);
 
     cartObj.push(this.product);
 
-    console.log(cartObj);
-
+    // console.log(cartObj);
 
     // setLocalStorage("so-cart", this.product); //old
     setLocalStorage("so-cart", cartObj); // new
-    // Used this as a reference: https://www.smashingmagazine.com/2014/02/create-client-side-shopping-cart/ 
-    // and this: https://stopbyte.com/t/how-to-make-a-shopping-cart-in-javascript/412 
+    // Used this as a reference: https://www.smashingmagazine.com/2014/02/create-client-side-shopping-cart/
+    // and this: https://stopbyte.com/t/how-to-make-a-shopping-cart-in-javascript/412
   }
   renderProductDetails() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
@@ -55,5 +52,4 @@ export default class ProductDetails {
       <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
     </div></section>`;
   }
-
 }

@@ -7,5 +7,5 @@ const productListElement = document.querySelector(".product-list");
 
 const tentList = new ProductList("tents", dataSource, productListElement);
 tentList.init();
-console.log(tentList.dataSource.getData());
-console.log(tentList);
+// console.log(tentList.dataSource.getData());
+// console.log(tentList);
