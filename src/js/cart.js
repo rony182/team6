@@ -3,11 +3,13 @@ function getLocalStorage(key) {
 }
 
 function getCartContents() {
-  // let markup = "";
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => renderCartItem(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+  let markup = "";
+  if (getLocalStorage("so-cart") != null) {
+    const cartItems = getLocalStorage("so-cart");
+    const htmlItems = cartItems.map((item) => renderCartItem(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+  }
 }
 
 function renderCartItem(item) {
