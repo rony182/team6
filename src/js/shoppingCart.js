@@ -1,7 +1,4 @@
-import {
-  getLocalStorage, renderListWithTemplate
-} from "./utils.js";
-
+import { getLocalStorage, renderListWithTemplate } from "./utils.js";
 
 export default class CartList {
   constructor(key, listElement) {
@@ -17,16 +14,21 @@ export default class CartList {
     template.querySelector(".cart-card__image img").src = product.Image;
     template.querySelector(".cart-card__image img").alt += product.Name;
     template.querySelector(".card__name").textContent = product.Name;
-    template.querySelector(".cart-card__color").textContent = product.Colors[0].ColorName;
-    template.querySelector(".cart-card__price").textContent += product.FinalPrice;
+    template.querySelector(".cart-card__color").textContent =
+      product.Colors[0].ColorName;
+    template.querySelector(".cart-card__price").textContent +=
+      product.FinalPrice;
     return template;
   }
 
   renderList(list) {
-      this.listElement.innerHTML = "";
+    this.listElement.innerHTML = "";
     const template = document.getElementById("shopping-cart-card-template");
-    renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
+    renderListWithTemplate(
+      template,
+      this.listElement,
+      list,
+      this.prepareTemplate
+    );
   }
-
-
 }

@@ -1,6 +1,5 @@
 import { loadHeaderFooter } from "./utils.js";
 
-
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -57,4 +56,3 @@ function renderTotal(total) {
 
 loadHeaderFooter();
 getCartContents();
-

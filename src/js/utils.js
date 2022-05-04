@@ -26,11 +26,10 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
-
 export function renderWithTemplate(template, parent, data, callback) {
   let clone = template.content.cloneNode(true);
 
-  if(callback) {
+  if (callback) {
     clone = callback(clone, data);
   }
 
@@ -38,10 +37,10 @@ export function renderWithTemplate(template, parent, data, callback) {
 }
 
 function convertToText(resource) {
-  if (resource.ok){
+  if (resource.ok) {
     return resource.text();
   } else {
-    return new Error("Error: Couldn't convert resource to text.")
+    return new Error("Error: Couldn't convert resource to text.");
   }
 }
 
@@ -61,14 +60,12 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(header, headerElement);
   renderWithTemplate(footer, footerElement);
-
-
 }
 
-export function renderListWithTemplate(template, parent, list, callback){
-  list.forEach(item => {
+export function renderListWithTemplate(template, parent, list, callback) {
+  list.forEach((item) => {
     const clone = template.content.cloneNode(true);
     const templateWithData = callback(clone, item);
     parent.appendChild(templateWithData);
-  })
+  });
 }
