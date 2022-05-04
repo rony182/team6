@@ -25,3 +25,34 @@ export function getParam(param) {
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
 }
+
+
+export function renderWithTemplate(template, parent, data, callback) {
+  let clone = template.content.cloneNode(true);
+
+  if(callback) {
+    clone = callback(clone, data);
+  }
+
+  parent.appendChild(clone);
+}
+
+export async function loadTemplate(path) {
+  const newElement = document.createElement("template");
+  newElement.innerHTML = await fetch(path).then(convertToText);
+
+  return newElement;
+}
+
+export async function loadHeaderFooter() {
+  const header = loadTemplate("../partials/header.html");
+  const footer = loadTemplate("../partials/footer.html");
+
+  const headerElement = document.querySelector("header");
+  const footerElement = document.querySelector("footer");
+
+  renderWithTemplate(header, headerElement);
+  renderWithTemplate(footer, footerElement);
+
+
+}
