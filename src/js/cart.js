@@ -1,3 +1,6 @@
+import { loadHeaderFooter } from "./utils.js";
+
+
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -52,4 +55,6 @@ function renderTotal(total) {
   document.querySelector(".cart-total").innerHTML += total;
 }
 
+loadHeaderFooter();
 getCartContents();
+
