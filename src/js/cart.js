@@ -34,24 +34,21 @@ function renderCartItem(item) {
 </li>`;
   // console.log(newItem);
 
-
   return newItem;
 }
 
-function calculateTotal(cartItems){
+function calculateTotal(cartItems) {
   // console.log(cartItems);
 
   var total = 0;
-  cartItems.forEach(item => {
-
+  cartItems.forEach((item) => {
     total += item.FinalPrice;
     // console.log(item.FinalPrice)
-    
   });
   return total;
 }
 
-function renderTotal(total){
+function renderTotal(total) {
   document.querySelector(".cart-total").innerHTML += total;
 }
 
