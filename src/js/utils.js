@@ -37,6 +37,14 @@ export function renderWithTemplate(template, parent, data, callback) {
   parent.appendChild(clone);
 }
 
+function convertToText(resource) {
+  if (resource.ok){
+    return resource.text();
+  } else {
+    return new Error("Error: Couldn't convert resource to text.")
+  }
+}
+
 export async function loadTemplate(path) {
   const newElement = document.createElement("template");
   newElement.innerHTML = await fetch(path).then(convertToText);
@@ -45,8 +53,8 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const header = loadTemplate("../partials/header.html");
-  const footer = loadTemplate("../partials/footer.html");
+  const header = await loadTemplate("../partials/header.html");
+  const footer = await loadTemplate("../partials/footer.html");
 
   const headerElement = document.querySelector("header");
   const footerElement = document.querySelector("footer");
